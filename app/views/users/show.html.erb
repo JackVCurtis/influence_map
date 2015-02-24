@@ -5,6 +5,7 @@
     <ul>
       <li><%= link_to "Name: #{map.name}", map%></li>
       <li>Query: <%= map.query %></li>
+      <li><%= link_to "Edit Map", edit_map_path(map) %></li>
     </ul>
   </div>
 <% end %>
