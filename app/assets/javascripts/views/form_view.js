@@ -1,6 +1,7 @@
 var FormView = Backbone.View.extend({
   el: ".js-query-form",
 
+  
   querySunAPI: function(){
     var self = this;
     $.ajax({

@@ -1,0 +1,24 @@
+<form class="js-query-form">
+  <p><label>Contributor Name</label></p>
+  <p><input name="contributor_ft" type="search"></p>
+  <p><label>Cycle</label></p>
+  <p><select name="cycle">
+    <% 12.times do |i| %>
+      <option value="<%= 1990 + (i * 2) %>"><%= 1990 + (i * 2) %></option>
+    <% end %>
+  </select></p>
+  <p><label>Type of Seat</label></p>
+  <p><select name="seat">
+    <option value="house">House</option>
+    <option value="senate">Senate</option>
+  </select></p>
+  <p><label>For or Against</label></p>
+  <p><select name="for_against">
+    <option value="for">For</option>
+    <option value="against">Against</option>
+  </select></p>
+  <p><label>Maximum Results Returned</label></p>
+  <p><input name="per_page" type="number" value="1000"></p>
+  <p><label>Minimum Contribution Amount</label></p>
+  <p><input name="amount" type="number" value="1000"></p>
+</form>
