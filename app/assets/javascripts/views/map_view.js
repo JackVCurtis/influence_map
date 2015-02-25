@@ -2,7 +2,7 @@ var MapView = Backbone.View.extend({
   el: ".js-map",
 
   initialize: function(){
-    this.listenTo(this.collection, 'add', this.colorMap)
+    this.listenTo(this.collection, 'reset', this.colorMap)
   },
 
   colorMap: function(){

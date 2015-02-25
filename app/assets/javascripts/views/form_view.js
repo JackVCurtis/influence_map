@@ -1,32 +1,48 @@
 var FormView = Backbone.View.extend({
   el: ".js-query-form",
 
-  
+  events: {
+    'click #query-submit' : 'querySunAPI'
+  },
+
+  getQueryParams: function(){
+    console.log(this.$("#amount").val())
+    var queryParams = {
+      page: 1,
+      per_page: parseInt(this.$("#per_page").val()),
+      amount: ">|" + this.$("#amount").val(),
+      contributor_ft: this.$("#contributor_ft").val(),
+      cycle: this.$("#cycle").val(),
+      seat: "federal:" + this.$("#seat").val(),
+      for_against: this.$("#for_against").val()
+    };
+    for (var key in queryParams ){
+      if (queryParams[key] == ""){ delete queryParams[key]; }
+    }
+    console.log(queryParams);
+    return queryParams;
+  },
+
   querySunAPI: function(){
     var self = this;
+    var queryParams = self.getQueryParams();
+    console.log(queryParams);
     $.ajax({
       url: "/data",
       data: {
-        query: {
-          page: 1,
-          per_page: 1000,
-          amount: "%3E%7C1000",
-          contributor_ft: "wal-mart",
-          cycle: "2012",
-          seat: "federal%3Ahouse",
-          for_against: "for"
-        }
+        query: queryParams
       },
       success: function(response){
+        console.log(response);
         for(var i = 0; i < response.length; i++){
           var dataArray = [];
           var data = new Data(response[i]);
           dataArray.push(data);
-          self.collection.add(dataArray);
+          self.collection.reset(dataArray);
         }        
       },
       error: function(response){
-        alert("Could not find data")
+        alert("Unable to access database")
       } 
     });
   }
