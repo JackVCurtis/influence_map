@@ -4,7 +4,7 @@
     <%= f.text_field :name %>
   </p>
 
-  <%= hidden_field_tag(:query, @map.query) %>
+  <%= f.hidden_field :query, value: @map.query %>
 
   <p>
     <%= f.submit %>

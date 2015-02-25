@@ -3,7 +3,7 @@ class MapsController < ApplicationController
     @map = Map.new
     @map.query = params[:query].to_query
 
-    render json: @map.search_api
+    render json: {results: @map.search_api, query: @map.query}
   end
 
   def index

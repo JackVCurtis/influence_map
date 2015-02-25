@@ -16,8 +16,7 @@ var MapView = Backbone.View.extend({
       var demSum = stateTotals[i][3];
       var repWeight = parseInt((repSum / max) * 150);
       var demWeight = parseInt((demSum / max) * 150);
-      this.$("#"+state).css("fill", "rgb("+ (200 - repWeight) +", 0, "+ (200 - demWeight) +")")
+      this.$("#"+state).css("fill", "rgb("+ (200 - repWeight) +", 0, "+ (200 - demWeight) +")");
     }
   }
-
-})
+});

@@ -31,10 +31,12 @@ var FormView = Backbone.View.extend({
       },
       success: function(response){
         var dataArray = [];
-        for(var i = 0; i < response.length; i++){
-          dataArray.push(response[i]);
+        console.log(response);
+        for(var i = 0; i < response["results"].length; i++){
+          dataArray.push(response["results"][i]);
         }        
         self.collection.reset(dataArray);
+        $("[name='map[query]']").val(response["query"]);
       },
       error: function(response){
         alert("Unable to access database")
