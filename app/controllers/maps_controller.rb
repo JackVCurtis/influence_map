@@ -1,4 +1,11 @@
 class MapsController < ApplicationController
+  def data
+    @map = Map.new
+    @map.query = params[:query].to_query
+
+    render json: @map.search_api
+  end
+
   def index
     @maps = Map.all
   end

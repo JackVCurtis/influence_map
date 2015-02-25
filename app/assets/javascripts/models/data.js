@@ -1,0 +1,1 @@
+var Data = Backbone.Model.extend({})

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'httparty'
 gem 'rack-oauth2'
 gem 'figaro'
 gem 'devise'

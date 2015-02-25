@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :maps
   resources :users
   
+  get "/data", to: "maps#data"
   root "maps#index"
 end
