@@ -4,27 +4,11 @@
 
 <%= render 'form' %>
 
-<script type="text/javascript">
+<form class="js-query-form">
+</form>
 
-  $.ajax({
-    url: "/data",
-    data: {
-      query: {
-        page: 1,
-        per_page: 20,
-        amount: "%3E%7C1000",
-        contributor_ft: "walmart",
-        cycle: "2012",
-        seat: "federal%3Asenate",
-        for_against: "for"
-      }
-    },
-    success: function(response){
-      console.log(response);
-      for(var i = 0; i < response.length; i++){
-        state = response[i]["recipient_state"]
-        $("#"+state).css("fill", "black")
-      }
-    } 
-  })
+<script type="text/javascript">
+  var dataCollection = new DataCollection({});
+  var mapView = new MapView({collection: dataCollection});
+  var formView = new FormView({collection: dataCollection});
 </script>
