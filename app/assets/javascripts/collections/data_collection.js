@@ -4,7 +4,6 @@ var DataCollection = Backbone.Collection.extend({
   sum: function(attr){
     var self = this;
     var sum = 0;
-    // console.log(self.at(1), parseInt(self.at(1).get(attr)))
     for(var i = 0; i < self.length; i++){
       var num = parseInt(self.at(i).get(attr));
       if(num >= 1){
@@ -14,9 +13,7 @@ var DataCollection = Backbone.Collection.extend({
     return sum;
   },
 
-  sumWhere: function(attr, conditionAttr, conditionVal){
-    var condition = {};
-    condition[conditionAttr] = conditionVal;
+  sumWhere: function(attr, condition){
     var modelArray = this.where(condition);
     var sum = 0;
     for(var i = 0; i < modelArray.length; i++){
@@ -30,9 +27,11 @@ var DataCollection = Backbone.Collection.extend({
     var stateSums = [];
     for(var i = 0; i < statesArray.length; i++){
       var state = statesArray[i][0];
-      var sum = this.sumWhere("amount", "recipient_state", state);
+      var sum = this.sumWhere("amount", {recipient_state: state});
+      var repSum = this.sumWhere("amount", {recipient_state: state, recipient_party: "R"})
+      var demSum = this.sumWhere("amount", {recipient_state: state, recipient_party: "D"})
       if(sum != 0){ 
-        stateSums.push([state, sum]);
+        stateSums.push([state, sum, repSum, demSum]);
       }
     }
     return stateSums;

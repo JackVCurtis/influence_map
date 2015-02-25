@@ -6,7 +6,6 @@ var FormView = Backbone.View.extend({
   },
 
   getQueryParams: function(){
-    console.log(this.$("#amount").val())
     var queryParams = {
       page: 1,
       per_page: parseInt(this.$("#per_page").val()),
@@ -19,14 +18,12 @@ var FormView = Backbone.View.extend({
     for (var key in queryParams ){
       if (queryParams[key] == ""){ delete queryParams[key]; }
     }
-    console.log(queryParams);
     return queryParams;
   },
 
   querySunAPI: function(){
     var self = this;
     var queryParams = self.getQueryParams();
-    console.log(queryParams);
     $.ajax({
       url: "/data",
       data: {
@@ -35,7 +32,6 @@ var FormView = Backbone.View.extend({
       success: function(response){
         var dataArray = [];
         for(var i = 0; i < response.length; i++){
-          // var data = new Data(response[i]);
           dataArray.push(response[i]);
         }        
         self.collection.reset(dataArray);

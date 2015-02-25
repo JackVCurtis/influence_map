@@ -9,13 +9,14 @@ var MapView = Backbone.View.extend({
     var baseColor = "#0000ff";
     var stateTotals = this.collection.sumByState();
     var max = this.collection.stateMax();
-    console.log(stateTotals, this.collection.sum("amount"));
     for(var i = 0; i < stateTotals.length; i++){
       var state = stateTotals[i][0];
       var sum = stateTotals[i][1];
-      var colorWeight = parseInt((sum / max) * 150);
-      console.log(colorWeight)
-      this.$("#"+state).css("fill", "rgb(0, "+ (200 - colorWeight) +", 0)")
+      var repSum = stateTotals[i][2];
+      var demSum = stateTotals[i][3];
+      var repWeight = parseInt((repSum / max) * 150);
+      var demWeight = parseInt((demSum / max) * 150);
+      this.$("#"+state).css("fill", "rgb("+ (200 - repWeight) +", 0, "+ (200 - demWeight) +")")
     }
   }
 
