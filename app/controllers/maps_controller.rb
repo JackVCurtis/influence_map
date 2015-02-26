@@ -12,9 +12,11 @@ class MapsController < ApplicationController
 
   def show
     @map = Map.find(params[:id])
+    @query_hash =  Rack::Utils.parse_nested_query(@map.query)
+
     respond_to do |format|
       format.html
-      format.json {render :json => @map.search_api}
+      format.json {render :json => {results: @map.search_api, query: @query_hash}}
     end
   end
 
@@ -37,7 +39,7 @@ class MapsController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.json {render :json => @map.search_api}
+      format.json {render :json => {results: @map.search_api, query: @query_hash}}
     end
   end
 

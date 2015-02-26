@@ -9,10 +9,17 @@
       <%= render 'map_img' %>
     </div>
   </div>
+
+  <div class="row">
+    <%= render "summary" %>
+  </div>
+
 </div>
 
 <script type="text/javascript">
   var dataCollection = new DataCollection({});
   var mapView = new MapView({collection: dataCollection});
   var formView = new FormView({collection: dataCollection});
+  var summaryView = new SummaryView({collection: dataCollection});
+
 </script>

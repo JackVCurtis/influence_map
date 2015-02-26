@@ -18,9 +18,8 @@ var FormView = Backbone.View.extend({
       url: url + ".json",
       success: function(response){
         var dataArray = [];
-        console.log(response);
-        for(var i = 0; i < response.length; i++){
-          dataArray.push(response[i]);
+        for(var i = 0; i < response["results"].length; i++){
+          dataArray.push(response["results"][i]);
         }        
         self.collection.reset(dataArray);
       },
