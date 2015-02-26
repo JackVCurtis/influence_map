@@ -1,8 +1,8 @@
-<% @maps.each do |map| %>
-  <div class="map_thumb">
-    <ul>
-      <li><%= link_to "Name: #{map.name}", map%></li>
-      <li>Query: <%= map.query %></li>
-    </ul>
-  </div>
-<% end %>
+<div class="container">
+  <% @maps.each do |map| %>
+    <div class="map-thumb col-xs-3">
+        <span class="map-thumb-name"><%= link_to "#{map.name}", map%></span>
+        <%= image_tag("us_map.svg") %>
+    </div>
+  <% end %>
+</div>
