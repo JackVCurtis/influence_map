@@ -49,6 +49,14 @@ class MapsController < ApplicationController
     end
   end
 
+  def destroy
+    @map = Map.find(params[:id])
+    if current_user == @map.user
+      @map.destroy
+      redirect_to current_user
+    end
+  end
+
   private
 
   def map_params
