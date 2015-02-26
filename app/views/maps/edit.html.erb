@@ -1,3 +1,11 @@
 <%= render 'map_img' %>
 
 <%= render 'form' %>
+
+<%= render 'query_form' %>
+
+<script type="text/javascript">
+  var dataCollection = new DataCollection({});
+  var mapView = new MapView({collection: dataCollection});
+  var formView = new FormView({collection: dataCollection});
+</script>

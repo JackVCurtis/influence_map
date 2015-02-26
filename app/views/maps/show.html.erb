@@ -3,4 +3,8 @@
 
 <%=  render "map_img" %>
 
-<p><%= @map.search_api %></p>
+<script type="text/javascript">
+  var dataCollection = new DataCollection({});
+  var mapView = new MapView({collection: dataCollection});
+  var formView = new FormView({collection: dataCollection});
+</script>

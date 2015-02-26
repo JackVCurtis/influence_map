@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
   def data
-    @map = Map.new
-    @map.query = params[:query].to_query
+      @map = Map.new
+      @map.query = params[:query].to_query
 
     render json: {results: @map.search_api, query: @map.query}
   end
@@ -12,6 +12,10 @@ class MapsController < ApplicationController
 
   def show
     @map = Map.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json {render :json => @map.search_api}
+    end
   end
 
   def new
@@ -30,6 +34,10 @@ class MapsController < ApplicationController
     @map = Map.find(params[:id])
     if current_user != @map.user
       redirect_to maps_path
+    end
+    respond_to do |format|
+      format.html
+      format.json {render :json => @map.search_api}
     end
   end
 

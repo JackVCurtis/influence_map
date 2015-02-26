@@ -2,7 +2,32 @@ var FormView = Backbone.View.extend({
   el: ".js-query-form",
 
   events: {
-    'click #query-submit' : 'querySunAPI'
+    'click #query-submit' : 'newSunAPIquery'
+  },
+
+  initialize: function(){
+    if($("[name='map[query]']").val() !== ""){
+      this.getMapData();
+    }
+  },
+
+  getMapData: function(){
+    var url = window.location.pathname;
+    var self = this;
+    $.ajax({
+      url: url + ".json",
+      success: function(response){
+        var dataArray = [];
+        console.log(response);
+        for(var i = 0; i < response.length; i++){
+          dataArray.push(response[i]);
+        }        
+        self.collection.reset(dataArray);
+      },
+      error: function(response){
+        alert("Unable to access database")
+      } 
+    });
   },
 
   getQueryParams: function(){
@@ -21,7 +46,7 @@ var FormView = Backbone.View.extend({
     return queryParams;
   },
 
-  querySunAPI: function(){
+  newSunAPIquery: function(){
     var self = this;
     var queryParams = self.getQueryParams();
     $.ajax({
