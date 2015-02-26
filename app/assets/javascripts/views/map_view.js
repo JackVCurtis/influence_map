@@ -10,10 +10,14 @@ var MapView = Backbone.View.extend({
   },
 
   colorMap: function(){
+    this.$(".state").css("fill", "#E0E0E0")
+
     if(this.$("#color-toggle").is(":checked")){
+      this.$(".btn").text("Show Total Contributions")
       this.colorPartisanship();
     }
     else {
+      this.$(".btn").text("Show Party Contributions")
       this.colorSpending();
     }
   },

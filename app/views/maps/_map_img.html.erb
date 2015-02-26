@@ -157,7 +157,37 @@
   <path class="border" d="M 211,493 V 548 L 247,593 M 0,425 H 144 L 211,493 H 297 L 350,547 V 593"/>
   <path class="territoryborder" d="M 559.77592,593 L 559.77592,515.6691 L 682.01719,515.6691 L 682.01719,593 M 632.77323,515.6691 L 632.77323,593 M 559.77592,557.52646 L 682.01719,557.52646M 597.89432,556.61302 L 597.89432,593.73613"/>
   </svg>
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-5">
+      <input id="color-toggle" type="checkbox" style="display:none">
+      <label for="color-toggle" class="btn btn-default">Show Party Contributions</label>
+    </div>
+  </div>
 
-  <input id="color-toggle" type="checkbox" style="display:none">
-  <label for="color-toggle"><h3>Show Partisanship/Total Donations</h3></label>
+  <div class="row legend">
+    <div class="col-xs-3">
+      <span>100% Republican Contributions</span>
+    </div>
+    <div class="col-xs-5">
+      <%= image_tag("spending_scale.svg") %>
+    </div>
+    <div class="col-xs-3">
+      <span>100% Democrat Contributions</span>
+    </div>
+  </div>
+
+  <div class="row legend">
+    <div class="col-xs-3">
+      <span>Least Money contributed (as % of top state)</span>
+    </div>
+    <div class="col-xs-5">
+      <%= image_tag("partisan_scale.svg") %>
+    </div>
+    <div class="col-xs-3">
+      <span>Most Money Contributed (as % of top state)</span>
+    </div>
+  </div>
+
 </div>

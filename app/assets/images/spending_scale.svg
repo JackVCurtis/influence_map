@@ -1,11 +1,11 @@
-<svg width="400" height="240" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="400" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <defs>
       <linearGradient id="Gradient1">
         <stop class="full-republican" offset="0%"/>
         <stop class="full-democrat" offset="100%"/>
       </linearGradient>
       <linearGradient id="Gradient2">
-        <stop class="no-donation" offset="0%"/>        
+        <stop class="bottom-state" offset="0%"/>        
         <stop class="top-state" offset="100%"/>
       </linearGradient>
       <style type="text/css">
@@ -14,12 +14,11 @@
         #rect2 { fill: url(#Gradient2); }
         .full-republican { stop-color: rgb(200,0,0); }
         .full-democrat { stop-color: rgb(0,0,200); }
-        .no-donation { stop-color: rgb(200,0,0) }
-        .top-state { stop-color: rgb(100,0,100) }
+        .bottom-state { stop-color: rgb(0,200,0) }
+        .top-state { stop-color: rgb(0,0,0) }
       ]]>
     </style>
   </defs>
   
-  <rect id="rect1" x="0" y="0" width="400" height="10"/>
   <rect id="rect2" x="0" y="15" width="400" height="10"/>
 </svg>
