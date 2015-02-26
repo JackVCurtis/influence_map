@@ -46,6 +46,18 @@ var DataCollection = Backbone.Collection.extend({
       }
     }
     return max;
+  },
+
+  topState: function(){
+    var max = 0;
+    var state = "";
+    var stateSums = this.sumByState();
+    for(var i = 0; i < stateSums.length; i++){
+      if(stateSums[i][1] > max){
+        state = stateSums[i][0];
+      }
+    }
+    return state;
   }
 
 })
