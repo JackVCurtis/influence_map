@@ -8,26 +8,34 @@
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><%= link_to "Home", maps_path %></li>
-        <% if user_signed_in? %>
-          <li><%= link_to "My Maps", current_user %></li>
-        <% end %>
-      </ul>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "Influence Map", maps_path, class: "navbar-brand" %>
+        </div>
+        <div id="main-links">
+          <%= link_to "New Map", new_map_path %>
+          <% if user_signed_in? %>
+            <%= link_to "My Maps", current_user %>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <span>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+            </span>
+          <% else %>
+            <span>
+              <%= link_to('Sign in', new_user_session_path)  %>  
+            </span>
+          <% end %>
+        </div>      
+        </div>
     </nav>
-    <% if user_signed_in? %>
-      <span>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-      </span>
-    <% else %>
-      <span>
-        <%= link_to('Sign in', new_user_session_path)  %>  
-      </span>
-    <% end %>
   </header>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+
 <%= yield %>
 
 </body>
