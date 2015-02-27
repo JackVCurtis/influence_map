@@ -11,7 +11,7 @@ var SummaryView = Backbone.View.extend({
     $.ajax({
       url: url + ".json",
       success: function(response){
-        console.log(response["query"])
+        console.log(response)
         response["query"]["amount"] = response["query"]["amount"].replace(">|", "");
         delete response["query"]["page"];
         for(key in response["query"]){

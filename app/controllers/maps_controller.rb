@@ -34,6 +34,7 @@ class MapsController < ApplicationController
 
   def edit
     @map = Map.find(params[:id])
+    @query_hash =  Rack::Utils.parse_nested_query(@map.query)
     if current_user != @map.user
       redirect_to maps_path
     end
