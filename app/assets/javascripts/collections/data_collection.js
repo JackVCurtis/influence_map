@@ -22,6 +22,7 @@ var DataCollection = Backbone.Collection.extend({
     }
     return sum;
   },
+
   //Returns total amount for each state where the amount is greater than 0
   sumByState: function(){
     var stateSums = [];
@@ -58,6 +59,16 @@ var DataCollection = Backbone.Collection.extend({
       }
     }
     return state;
+  },
+
+  sumByContributor: function(){
+    var contributorArray = this.pluck("contributor_name");
+    contributorArray = $.unique(contributorArray);
+    var contributorTotals = {};
+    for(var i = 0; i < contributorArray.length; i++){
+      contributorTotals[contributorArray[i]] = this.sumWhere("amount", {contributor_name: contributorArray[i]});
+    }
+    return contributorTotals
   }
 
 })
