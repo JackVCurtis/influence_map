@@ -11,12 +11,10 @@ var SummaryView = Backbone.View.extend({
     $.ajax({
       url: url + ".json",
       success: function(response){
-        console.log(response)
         response["query"]["amount"] = response["query"]["amount"].replace(">|", "");
         delete response["query"]["page"];
         for(key in response["query"]){
           // console.log(response["query"][key]);
-          console.log(key)
           element = document.querySelector("." + key);
           element.innerText = response["query"][key];
         }
@@ -29,8 +27,21 @@ var SummaryView = Backbone.View.extend({
   },
 
   getStats: function(){
-    $(".total").text(" " + this.collection.sum("amount"))
-    $(".top-state").text(" " + this.collection.topState())
-    $(".top-state-total").text(" " + this.collection.stateMax())
-  }
+    $(".total").text(" " + this.collection.sum("amount"));
+    $(".top-state").text(" " + this.collection.topState());
+    $(".top-state-total").text(" " + this.collection.stateMax());
+    $(".top-contributors").html(this.getTopContributors());
+  },
+
+  getTopContributors: function(){
+    var contributorTotals = this.collection.sumByContributor();
+    var html = "<tr><th>Contributor Name</th><th>Total</th></tr>";
+    for(var i = 0; i < contributorTotals.length; i++){
+      var name = "<td>" + contributorTotals[i].name + "</td>";
+      var total = "<td>" + contributorTotals[i].total + "</td>";
+      html +=  "<tr>" + name + total + "</tr>";
+    }
+    return html;
+  },
+
 })

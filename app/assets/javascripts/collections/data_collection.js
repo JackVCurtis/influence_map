@@ -64,11 +64,18 @@ var DataCollection = Backbone.Collection.extend({
   sumByContributor: function(){
     var contributorArray = this.pluck("contributor_name");
     contributorArray = $.unique(contributorArray);
-    var contributorTotals = {};
+    var contributorTotals = [];
     for(var i = 0; i < contributorArray.length; i++){
-      contributorTotals[contributorArray[i]] = this.sumWhere("amount", {contributor_name: contributorArray[i]});
+      var contributorSum = {
+        name: contributorArray[i], 
+        total: this.sumWhere("amount", {contributor_name: contributorArray[i]})
+      }
+      contributorTotals.push(contributorSum);
     }
-    return contributorTotals
+    contributorTotals = contributorTotals.sort(function(a, b){
+      return b.total - a.total;
+    })
+    return contributorTotals.slice(0, 10)
   }
 
 })
