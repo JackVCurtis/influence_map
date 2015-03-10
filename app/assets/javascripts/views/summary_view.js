@@ -14,7 +14,6 @@ var SummaryView = Backbone.View.extend({
         response["query"]["amount"] = response["query"]["amount"].replace(">|", "");
         delete response["query"]["page"];
         for(key in response["query"]){
-          // console.log(response["query"][key]);
           element = document.querySelector("." + key);
           element.innerText = response["query"][key];
         }
